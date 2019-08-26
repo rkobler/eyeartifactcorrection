@@ -142,7 +142,7 @@ end
 
 %% open the psychotoolbox screen
 AssertOpenGL;
-PsychDebugWindowConfiguration();
+% PsychDebugWindowConfiguration();
 
 screens = Screen('Screens');
 screenNumber = max(screens); % figure will be displayed in the second screen
