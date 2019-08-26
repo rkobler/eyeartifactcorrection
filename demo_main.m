@@ -24,11 +24,21 @@ addpath('./utility');
 addpath('./external');
 addpath('./algorithms');  
 
+% check for correct eeglab options
+
 % startup eeglab
-% eeglab nogui
+eeglab nogui
 
 % IMPORTANT: use double precision in your eeglab settings! Otherwise some
 % optimization algorithms might not converge.
+% the next lines perform an automatic check
+eeglab_options
+if option_single
+    error(['Wrong eeglab options: please switch off single precision ' ...
+        'in the memory options! Execute the command ''pop_editoptions'' '...
+        'to edit your configuration.']);
+end
+clearvars
 
 %% load and preprocess the train and test set
 file_name = 'demo_trainset';
