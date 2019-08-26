@@ -143,7 +143,7 @@ if sum(rej_mask) > 0
 end
 
 %% detect the saccades and blinks
-EEG = util_detect_saccades_and_blinks(EEG, false);
+EEG = util_detect_saccades_and_blinks(EEG);
 
 mask_blink_idx = eeg_chaninds(EEG, 'eye-blink');
 mask_up_idx = eeg_chaninds(EEG, 'eye-u');
