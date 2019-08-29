@@ -54,7 +54,11 @@ clearvars -except EEGTRN EEGTST
 %% extract the features and fit the model to the training data
 
 label_chan_idx = eeg_chaninds(EEGTRN, 'artifactclasses');
-eeg_chan_idxs = eeg_chantype(EEGTRN, 'EEG');
+if exist('eeg_chantype', 'file') % eeglab version 14 and before
+    eeg_chan_idxs = eeg_chantype(EEGTRN, 'EEG');
+else % eeglab version 2019
+    eeg_chan_idxs = eeg_decodechan(EEGTRN.chanlocs, 'EEG', 'type');
+end
 
 X_trn = EEGTRN.data;
 y_trn = EEGTRN.data(label_chan_idx, :, :);

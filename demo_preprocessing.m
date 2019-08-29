@@ -45,7 +45,11 @@ hHp = design(d, 'butter', 'SOSScaleNorm', 'linf');
 SOS = hHp.sosMatrix;
 G = hHp.ScaleValues;
 
-eeg_chan_idxs = eeg_chantype(EEG, 'EEG');
+if exist('eeg_chantype', 'file') % eeglab version 14 and before
+    eeg_chan_idxs = eeg_chantype(EEG, 'EEG');
+else % eeglab version 2019
+    eeg_chan_idxs = eeg_decodechan(EEG.chanlocs, 'EEG', 'type');
+end
 
 EEG.data(eeg_chan_idxs,:) = filtfilt(SOS, G, EEG.data(eeg_chan_idxs,:)')';
 
@@ -62,7 +66,7 @@ EEG.data(eog_chan_idxs(1),:) = EEG.data(reog_chan_idxs(1),:) - ...
 % compute the vertical eog derivative as the average of the left and right
 % sides
 EEG.data(eog_chan_idxs(2),:) = mean(EEG.data([reog_chan_idxs(2), leog_chan_idxs(2)],:) - ...
-    EEG.data([reog_chan_idxs(3), leog_chan_idxs(2)],:),1);
+    EEG.data([reog_chan_idxs(3), leog_chan_idxs(3)],:),1);
 % compute the radial eog derivative as the average activity of the eog
 % channels
 EEG.data(eog_chan_idxs(3),:) = mean(EEG.data([reog_chan_idxs, leog_chan_idxs],:),1);
