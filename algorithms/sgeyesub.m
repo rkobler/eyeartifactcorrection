@@ -26,7 +26,7 @@ classdef sgeyesub < spatial_filter
         
         W = NaN; % unmixing matrix
         A = NaN; % mixing matrix
-        R = NaN; % one step correction matrix
+        C = NaN; % one step correction matrix
         eeg_chan_idxs = NaN;
         
         % elastic net penalized logistic regression parameters
@@ -113,12 +113,12 @@ classdef sgeyesub < spatial_filter
             obj.A = cat(2, A_eye, a_blk);            
             
             % compute one step reconstruction matrix
-            obj.R = (eye(nbchan) - a_blk * w_blk')*C_eye;
+            obj.C = (eye(nbchan) - a_blk * w_blk')*C_eye;
         end
         %%
         function data = apply(obj, data)
             % perform the correction step
-            data(obj.eeg_chan_idxs,:) = obj.R * data(obj.eeg_chan_idxs, :);
+            data(obj.eeg_chan_idxs,:) = obj.C * data(obj.eeg_chan_idxs, :);
         end
         
         %%
@@ -126,11 +126,11 @@ classdef sgeyesub < spatial_filter
             % elastic net regularized penalized logistic regression
             %
             % optimization problem:
-            % w_plr,b_plr = argmin_w,b - sum_t log p(c_t|y_t) 
-            %                          + lambda_l2*||w||^2_Rn 
+            % w_plr,b_plr = argmin_w,b sum_t log (1 + exp(-y_t*z_t))
+            %                          + lambda_l2/2*||w||^2_Rn 
             %                          + lambda_l1*||w||_1
             %
-            % with p(c=1|y) = p(c=1|y=w'x+b) = sigmoid(w'x+b)
+            % with z_t = w'x_t+b
             %
             
             [ndim, nsamples] = size(X);

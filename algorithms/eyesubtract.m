@@ -72,7 +72,10 @@ classdef eyesubtract < spatial_filter
             data(obj.eeg_chan_idxs,:) = obj.R * data(obj.eeg_chan_idxs, :);
         end
     end
-    %% original functions from eyesutract eeglab plugin v1.0
+    
+    
+    methods (Access = protected)    
+    %% original functions from eyesutract eeglab plugin v1.0    
     
     % Copyright (C) 2005 Xiang Zhou, Adam Gerson, Lucas Parra and Paul Sajda
     %
@@ -89,8 +92,6 @@ classdef eyesubtract < spatial_filter
     % You should have received a copy of the GNU General Public License
     % along with this program; if not, write to the Free Software
     % Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-
-    methods (Access = protected)
         
     function Difvec=difference(obj, EEG_1,EEG_2)
 
