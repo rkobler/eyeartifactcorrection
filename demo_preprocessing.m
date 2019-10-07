@@ -113,6 +113,8 @@ if exist([file_name '_badepochs.mat'], 'file')
     disp(['loading bad epochs from file!. bad epochs: ' num2str(find(rej_mask))]);
 else
 
+    rej_mask = false(1, EEG.trials);
+    
     tmpreject = trial2eegplot(rej_mask, zeros(EEG.nbchan, EEG.trials), EEG.pnts, [1, 1, 0.783]);
 
     eegplot( EEG.data, 'srate', EEG.srate, 'title', 'manual artifact rejection', ...
@@ -125,8 +127,6 @@ else
     
     if ~isempty(TMPREJ)
         rej_mask = logical(eegplot2trial(TMPREJ, EEG.pnts, EEG.trials));
-    else
-        rej_mask = false(1, EEG.trials);
     end
 
     save([file_name '_badepochs.mat'], 'rej_mask');
