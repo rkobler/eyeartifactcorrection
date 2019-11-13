@@ -97,7 +97,9 @@ events_to_epoch = {'1', '2', '3', '4'}; % 1=rest,2=horz,3=vert,4=blink
 epoch_slice_times = [1 9]; % omit the first and last second
 
 % adjust the trial events so that they are maintained in the epoched data
-[~, epoch_evt_idxs] = pop_selectevent(EEG, 'type',events_to_epoch);
+all_evt_types = {EEG.event.type};
+res = cellfun(@(type) strcmp(all_evt_types, type)', events_to_epoch, 'UniformOutput', false);
+epoch_evt_idxs = find(any(cell2mat(res),2));
 
 trial_labels = str2double({EEG.event(epoch_evt_idxs).type});
 
@@ -106,10 +108,10 @@ EEG.etc.trial_labels = trial_labels(accepted_trials);
 
 EEG = eeg_checkset(EEG, 'eventconsistency');
 
-
+rej_mask_file = [file_name '_badepochs.mat'];
 % visual inspection and artifact rejection
-if exist([file_name '_badepochs.mat'], 'file')
-    load([file_name '_badepochs.mat'], 'rej_mask');
+if exist(rej_mask_file, 'file')
+    load(rej_mask_file, 'rej_mask');
     disp(['loading bad epochs from file!. bad epochs: ' num2str(find(rej_mask))]);
 else
 
