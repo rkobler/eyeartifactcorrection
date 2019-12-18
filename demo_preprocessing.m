@@ -40,10 +40,18 @@ EEG = pop_loadset([file_name '.set'], '.');
 
 %% apply a 0.4 Hz zero-phase high-pass filter to the eeg and eog signals
 
-d = fdesign.highpass('N,F3db', 2, 0.4, EEG.srate);
-hHp = design(d, 'butter', 'SOSScaleNorm', 'linf');    
-SOS = hHp.sosMatrix;
-G = hHp.ScaleValues;
+try
+    d = fdesign.highpass('N,F3db', 2, 0.4, EEG.srate);
+    hHp = design(d, 'butter', 'SOSScaleNorm', 'linf');    
+    SOS = hHp.sosMatrix;
+    G = hHp.ScaleValues;
+catch msg
+    warning(['Error creating the high-pass filter. Probably licensing issue. ' ...
+        'Trying fallback option.']);
+   
+    [b, a] = butter(2, 0.4/(EEG.srate/2),'high');
+    [SOS, G] = tf2sos(b,a);
+end
 
 if exist('eeg_chantype', 'file') % eeglab version 14 and before
     eeg_chan_idxs = eeg_chantype(EEG, 'EEG');
