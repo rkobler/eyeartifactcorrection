@@ -124,7 +124,7 @@ classdef geyesub < spatial_filter
             % penalized logistic regression according to the algorithm
             % outlined in Parra et al. 2005
             
-            ndim = size(X,1);
+            [ndim, nobs] = size(X);
             classes = unique(labels);
             % only allow applicable for a two-class problem
             assert(length(classes) == 2);
@@ -156,9 +156,9 @@ classdef geyesub < spatial_filter
                     fprintf('dw=%e', dw_norm);
                 end
                 p = f(w_plr' * X);
-                
+                P = sparse(1:nobs, 1:nobs, p .* (1-p));
                 g = X * (labels - p)' - Lambda * w_plr;
-                H = X * diag(p .* (1-p)) * X' + Lambda;
+                H = X * P * X' + Lambda;
                 
                 dw = H\g;
                 w_plr = w_plr + dw;

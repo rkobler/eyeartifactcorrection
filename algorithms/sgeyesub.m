@@ -155,7 +155,7 @@ classdef sgeyesub < spatial_filter
             fprintf('PLR working')
             
             % preallocate variables
-            P = eye(nsamples);
+            P = speye(nsamples);
             diag_idxs = find(P);
             
             % iterate until convergence
