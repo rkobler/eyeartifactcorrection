@@ -20,11 +20,15 @@
 function [ blink_signal ] = eogblink2events( EEG, channel_idx, threshold, t_extend, label )
 %eogblink2events Detects blinks in the EEG dataset using the channel 
 %   defined by channel_idx for trials with the label 'label' that are
-%   outside the interval spanned by +/- threshold
+%   above the threshold
 
-% all_event_mat = [];
+% find if the blinks are along the positive or negative direction of the
+% EOG channel
+[~, idxs] = sort(abs(EEG.data(channel_idx,:)), 'descend');
+peak_idxs = idxs(1:floor(EEG.pnts*EEG.trials*0.01));
+peak_sign = median(sign(EEG.data(channel_idx, peak_idxs)));
 
-blink_signal = squeeze(abs(EEG.data(channel_idx,:,:)) > threshold);
+blink_signal = squeeze((EEG.data(channel_idx,:,:) * peak_sign) > threshold);
 
 blink_signal(:,EEG.etc.trial_labels ~= label) = 0;
 
