@@ -37,5 +37,5 @@ The pre-processed EEG dataset investigated in [1] is [publicly available](https:
 
 [6] Kobler, R. J., Sburlea, A. I., Lopes-Dias, C., Mondini, V., & Müller-Putz, G. "EEG eye artifact dataset." (2020) Retrieved from https://osf.io/2qgrd 
 
-## Acknoledgements
+## Acknowledgements
 This work was supported by the European Research Council (ERC) under the European Union's Horizon 2020 research and innovation programme (Consolidator Grant 681231 'Feel Your Reach').
