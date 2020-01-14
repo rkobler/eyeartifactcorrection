@@ -33,7 +33,7 @@ The pre-processed EEG dataset investigated in [1] is [publicly available](https:
 
 [4] Plöchl, M., Ossandón, J. P., and König P. "Combining EEG and Eye Tracking: Identification, Characterization, and Correction of Eye Movement Artifacts in Electroencephalographic Data." Frontiers in Human Neuroscience 6, (2012): 1–23. https://doi.org/10.3389/fnhum.2012.00278
 
-[5] Xiang, Z., Gerson, A. D., Lucas C Parra, L. C., and Paul Sajda, P. "EEGLAB Plugin EYESUBTRACT," (2005). Retrieved from http://sccn.ucsd.edu/eeglab/plugins/eyesubtract1.0.zip
+[5] Zhou, X., Gerson, A. D., Lucas C Parra, L. C., and Paul Sajda, P. "EEGLAB Plugin EYESUBTRACT," (2005). Retrieved from http://sccn.ucsd.edu/eeglab/plugins/eyesubtract1.0.zip
 
 [6] Kobler, R. J., Sburlea, A. I., Lopes-Dias, C., Mondini, V., & Müller-Putz, G. "EEG eye artifact dataset." (2020) Retrieved from https://osf.io/2qgrd 
 
