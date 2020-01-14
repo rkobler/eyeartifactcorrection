@@ -1,8 +1,13 @@
 classdef sgeyesub < spatial_filter
 % Sparse gerneralized eye subspace subtraction algorithm according to 
-% Kobler et al. 2019
+% Kobler et al. submitted
 %
-% Kobler et al. 2019: TODO!!!
+% Kobler, R. J., Sburlea, A. I., Lopes-Dias, C., Schwarz, A., Hirata M.
+%   & Müller-Putz, G. R. 
+%   Corneo-retinal-dipole and blink related eye artifacts can be corrected 
+%   offline and online in electroencephalographic 
+%   and magnetoencephalographic signals. 
+%   NeuroImage, submitted
 %
 % Copyright (C) 2019 Reinmar Kobler, Graz University of Technology, Austria
 % <reinmar.kobler@tugraz.at>

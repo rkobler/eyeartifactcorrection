@@ -40,7 +40,7 @@ if option_single
 end
 clearvars
 
-%% load and preprocess the train and test set
+%% load and preprocess the demonstration train and test set
 file_name = 'demo_trainset';
 demo_preprocessing
 EEGTRN = EEG;
@@ -50,6 +50,32 @@ demo_preprocessing
 
 EEGTST = EEG;
 clearvars -except EEGTRN EEGTST
+
+%% load a dataset from the public repository on OSF
+% 
+% % download the dataset from https://osf.io/2qgrd/ and copy the files 
+% % 'study02_p02_prep.set' and 'study02_p02_prep.fdt' to this folder
+% 
+% % load one recording
+% dir = '.';
+% file_name = 'study02_p02_prep.set';
+% EEG = pop_loadset(file_name, dir);
+% 
+% trn_trial_idxs = find(EEG.etc.trial_blocks == 1);
+% tst_trial_idxs = find(EEG.etc.trial_blocks == 2);
+% 
+% % partition the data into train and test sets based on on each trial's
+% % block ID
+% EEGTRN = pop_select(EEG, 'trial', find(EEG.etc.trial_blocks == 1));
+% EEGTRN.etc.trial_labels = EEGTRN.etc.trial_labels(trn_trial_idxs);
+% EEGTRN.etc.trial_ids = EEGTRN.etc.trial_ids(trn_trial_idxs);
+% EEGTRN.etc.trial_blocks = EEGTRN.etc.trial_blocks(trn_trial_idxs);
+% 
+% EEGTST = pop_select(EEG, 'trial', find(EEG.etc.trial_blocks == 2));
+% EEGTST.etc.trial_labels = EEGTST.etc.trial_labels(tst_trial_idxs);
+% EEGTST.etc.trial_ids = EEGTST.etc.trial_ids(tst_trial_idxs);
+% EEGTST.etc.trial_blocks = EEGTST.etc.trial_blocks(tst_trial_idxs);
+% clearvars -except EEGTRN EEGTST
 
 %% extract the features and fit the model to the training data
 
