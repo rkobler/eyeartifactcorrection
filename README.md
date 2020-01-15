@@ -2,7 +2,7 @@
 
 This repository contains a reference implementation of 
 * the sparse generalized eye artifact subspace subtraction (SGEYESUB) algorithm presented in [1].
-* 4 other eye artifact correction algorithms presented in [2-6].
+* 4 other eye artifact correction algorithms presented in [2-5].
 
 After the algorithm parameters are fitted to calibration data, corneo-retinal dipole and blink related eye artifacts can be corrected offline and online.
 In [1,2] calibration data was recorded using a visually guided paradigm. A reference implementation using [Psychtoolbox](http://psychtoolbox.org/) and [labstreaminglayer](https://github.com/sccn/labstreaminglayer) is provided in the subfolder `paradigm`.
