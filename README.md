@@ -2,7 +2,7 @@
 
 This repository contains a reference implementation of 
 * the sparse generalized eye artifact subspace subtraction (SGEYESUB) algorithm presented in [1].
-* 4 other eye artifact correction algorithms presented in [2-5].
+* 4 other eye artifact correction algorithms presented in [2-6].
 
 After the algorithm parameters are fitted to calibration data, corneo-retinal dipole and blink related eye artifacts can be corrected offline and online.
 In [1,2] calibration data was recorded using a visually guided paradigm. A reference implementation using [Psychtoolbox](http://psychtoolbox.org/) and [labstreaminglayer](https://github.com/sccn/labstreaminglayer) is provided in the subfolder `paradigm`.
@@ -35,7 +35,7 @@ The pre-processed EEG dataset investigated in [1] is [publicly available](https:
 
 [5] Zhou, X., Gerson, A. D., Lucas C Parra, L. C., and Paul Sajda, P. "EEGLAB Plugin EYESUBTRACT," (2005). Retrieved from http://sccn.ucsd.edu/eeglab/plugins/eyesubtract1.0.zip
 
-[6] Kobler, R. J., Sburlea, A. I., Lopes-Dias, C., Mondini, V., & Müller-Putz, G. "EEG eye artifact dataset." (2020) Retrieved from https://osf.io/2qgrd 
+[6] Kobler, R. J., Sburlea, A. I., Lopes-Dias, C., Schwarz, A., Mondini, V., & Müller-Putz, G. R. "EEG eye artifact dataset." (2020) Retrieved from https://osf.io/2qgrd 
 
 ## Acknowledgements
 This work was supported by the European Research Council (ERC) under the European Union's Horizon 2020 research and innovation programme (Consolidator Grant 681231 'Feel Your Reach').
