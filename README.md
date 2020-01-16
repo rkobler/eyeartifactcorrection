@@ -1,13 +1,13 @@
 ## Eye movement and blink-related artifact correction in EEG and MEG data
 
-This repository contains a reference implementation of 
+This repository contains reference implementations of 
 * the sparse generalized eye artifact subspace subtraction (SGEYESUB) algorithm presented in [1].
 * 4 other eye artifact correction algorithms presented in [2-5].
 
-After the algorithm parameters are fitted to calibration data, corneo-retinal dipole and eyelid-related eye artifacts can be corrected offline and online.
+After the algorithm parameters are fitted to calibration data, eye movement and blink-related eye artifacts can be corrected offline and online.
 In [1,2] calibration data was recorded using a visually guided paradigm. A reference implementation using [Psychtoolbox](http://psychtoolbox.org/) and [labstreaminglayer](https://github.com/sccn/labstreaminglayer) is provided in the subfolder `paradigm`.
 
-This repository comes with a demonstration dataset containing electroencephalographic (EEG) and electrooculographic (EOG) activity of one person. The data is stored in [eeglab](https://sccn.ucsd.edu/eeglab/index.php) format.
+This repository comes also with a demonstration dataset containing electroencephalographic (EEG) and electrooculographic (EOG) activity of one person. The data is stored in [eeglab](https://sccn.ucsd.edu/eeglab/index.php) format.
 
 #### Public EEG dataset
 
