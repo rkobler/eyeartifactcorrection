@@ -1,4 +1,4 @@
-# eyeartifactcorrection
+# Eye movement and blink-related artifact correction in EEG and MEG data
 
 This repository contains a reference implementation of 
 * the sparse generalized eye artifact subspace subtraction (SGEYESUB) algorithm presented in [1].
@@ -20,7 +20,7 @@ The pre-processed EEG dataset investigated in [1] is [publicly available](https:
 * Both demo datasets contain continuous recordings. Before the algorithms are fitted and evaluated, the datasets are pre-processed in the script `demo_preprocessing.m`
 * The detailed pre-processing steps are presented in [1]. 
 * Next an object of the algorithm is created with `algo = sgeyesub()`
-* The object is fitted to the calibration data `algo.fit(X_trn, y_trn, eeg_chan_idxs)` where `X_trn` and `y_trn` contain the EEG (and EOG) signals and labels.
+* The object is fitted to the calibration data `algo.fit(X_trn, y_trn, eeg_chan_idxs)` where `X_trn` and `y_trn` contain the M/EEG (and EOG) signals and labels.
 * New samples (data) are corrected with `x_corrected = algo.apply(x)`.
 
 ## References
