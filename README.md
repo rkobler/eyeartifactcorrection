@@ -1,4 +1,4 @@
-# Eye movement and blink-related artifact correction in EEG and MEG data
+## Eye movement and blink-related artifact correction in EEG and MEG data
 
 This repository contains a reference implementation of 
 * the sparse generalized eye artifact subspace subtraction (SGEYESUB) algorithm presented in [1].
@@ -9,11 +9,11 @@ In [1,2] calibration data was recorded using a visually guided paradigm. A refer
 
 This repository comes with a demonstration dataset containing electroencephalographic (EEG) and electrooculographic (EOG) activity of one person. The data is stored in [eeglab](https://sccn.ucsd.edu/eeglab/index.php) format.
 
-### Public EEG dataset
+#### Public EEG dataset
 
 The pre-processed EEG dataset investigated in [1] is [publicly available](https://osf.io/2qgrd/) on OSF [6].
 
-## Getting started
+### Getting started
 * Download or clone the repository
 * Startup the [eeglab](https://sccn.ucsd.edu/wiki/Chapter_01:_Loading_Data_in_EEGLAB#Installing_EEGLAB_and_tutorial_files) toolbox
 * Open the `demo_main.m` script. The script loads a calibration dataset (`demo_trainset.set`) and an evaluation dataset (`demo_testset.set`). 
@@ -23,7 +23,7 @@ The pre-processed EEG dataset investigated in [1] is [publicly available](https:
 * The object is fitted to the calibration data `algo.fit(X_trn, y_trn, eeg_chan_idxs)` where `X_trn` and `y_trn` contain the M/EEG (and EOG) signals and labels.
 * New samples (data) are corrected with `x_corrected = algo.apply(x)`.
 
-## References
+### References
 
 [1] Kobler, R. J., Sburlea, A. I., Lopes-Dias, C., Schwarz, A., Hirata, M. and Müller-Putz, G. R. "Corneo-retinal-dipole and eyelid-related eye artifacts can be corrected offline and online in electroencephalographic and magnetoencephalographic signals.", submitted
 
@@ -37,5 +37,5 @@ The pre-processed EEG dataset investigated in [1] is [publicly available](https:
 
 [6] Kobler, R. J., Sburlea, A. I., Lopes-Dias, C., Schwarz, A., Mondini, V., and Müller-Putz, G. R. "EEG eye artifact dataset." (2020) Retrieved from https://osf.io/2qgrd 
 
-## Acknowledgements
+### Acknowledgements
 This work was supported by the European Research Council (ERC) under the European Union's Horizon 2020 research and innovation programme (Consolidator Grant 681231 'Feel Your Reach').
