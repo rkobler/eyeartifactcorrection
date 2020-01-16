@@ -4,7 +4,7 @@ This repository contains a reference implementation of
 * the sparse generalized eye artifact subspace subtraction (SGEYESUB) algorithm presented in [1].
 * 4 other eye artifact correction algorithms presented in [2-5].
 
-After the algorithm parameters are fitted to calibration data, corneo-retinal dipole and blink related eye artifacts can be corrected offline and online.
+After the algorithm parameters are fitted to calibration data, corneo-retinal dipole and eyelid-related eye artifacts can be corrected offline and online.
 In [1,2] calibration data was recorded using a visually guided paradigm. A reference implementation using [Psychtoolbox](http://psychtoolbox.org/) and [labstreaminglayer](https://github.com/sccn/labstreaminglayer) is provided in the subfolder `paradigm`.
 
 This repository comes with a demonstration dataset containing electroencephalographic (EEG) and electrooculographic (EOG) activity of one person. The data is stored in [eeglab](https://sccn.ucsd.edu/eeglab/index.php) format.
@@ -25,7 +25,7 @@ The pre-processed EEG dataset investigated in [1] is [publicly available](https:
 
 ## References
 
-[1] Kobler, R. J., Sburlea, A. I., Lopes-Dias, C., Schwarz, A., Hirata, M. and Müller-Putz, G. R. "Corneo-retinal-dipole and blink related eye artifacts can be corrected offline and online in electroencephalographic and magnetoencephalographic signals.", submitted
+[1] Kobler, R. J., Sburlea, A. I., Lopes-Dias, C., Schwarz, A., Hirata, M. and Müller-Putz, G. R. "Corneo-retinal-dipole and eyelid-related eye artifacts can be corrected offline and online in electroencephalographic and magnetoencephalographic signals.", submitted
 
 [2] Kobler, R. J., Sburlea, A. I., and Müller-Putz G.R., "A Comparison of Ocular Artifact Removal Methods for Block Design Based Electroencephalography Experiments." In Proceedings of the 7th Graz Brain-Computer Interface Conference, 236–41, 2017. https://doi.org/10.3217/978-3-85125-533-1-44
 
