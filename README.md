@@ -25,7 +25,7 @@ The pre-processed EEG dataset investigated in [1] is [publicly available](https:
 
 ### References
 
-[1] Kobler, R. J., Sburlea, A. I., Lopes-Dias, C., Schwarz, A., Hirata, M. and Müller-Putz, G. R. "Corneo-retinal-dipole and eyelid-related eye artifacts can be corrected offline and online in electroencephalographic and magnetoencephalographic signals.", submitted
+[1] Kobler, R. J., Sburlea, A. I., Lopes-Dias, C., Schwarz, A., Hirata, M. and Müller-Putz, G. R. "Corneo-retinal-dipole and eyelid-related eye artifacts can be corrected offline and online in electroencephalographic and magnetoencephalographic signals.", 218 (2020). https://doi.org/10.1016/j.neuroimage.2020.117000
 
 [2] Kobler, R. J., Sburlea, A. I., and Müller-Putz G.R., "A Comparison of Ocular Artifact Removal Methods for Block Design Based Electroencephalography Experiments." In Proceedings of the 7th Graz Brain-Computer Interface Conference, 236–41, 2017. https://doi.org/10.3217/978-3-85125-533-1-44
 
