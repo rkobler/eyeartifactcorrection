@@ -109,7 +109,7 @@ y_trn = EEGTRN.data(label_chan_idx, :, :);
 % algo.fit(X_trn, y_trn, eeg_chan_idxs);
 
 % fit the sparse generalized eye subspace subtraction algorithm according to 
-% Kobler et al. 2019
+% Kobler et al. 2020
 algo = sgeyesub();
 algo.fit(X_trn, y_trn, eeg_chan_idxs);
 

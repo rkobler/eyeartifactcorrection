@@ -29,7 +29,9 @@ function EEG = util_detect_saccades_and_blinks(EEG)
 %% detect blinks and saccades in trials
 
 % thresholds were optimized for active electrodes with
-% with Brainamp (Brain Products GmbH) and g.USBamp (g.tec Gmbh) amplifiers
+% Brainamp (Brain Products GmbH) and g.USBamp (g.tec Gmbh) amplifiers
+% and the reference electrode attached to the left or right 
+% earlobe or mastoid
 blink_fp_th = 100;
 blink_vert_fp_th = 150;
 blink_tp_th = 75;
@@ -38,12 +40,11 @@ saccade_fp_th = 100;
 saccade_tp_th = 10;
 
 
-eye_blink_sig = false(1,EEG.pnts,EEG.trials);
+[eye_blink_sig, blink_sign] = eogblink2events(EEG, eeg_chaninds(EEG, 'VEOG_lpf'), blink_tp_th, 0.025, 4);
+eye_blink_sig = eye_blink_sig | eogblink2events(EEG, eeg_chaninds(EEG, 'VEOG_lpf'), blink_fp_th, 0.75, 1, blink_sign);
+eye_blink_sig = eye_blink_sig | eogblink2events(EEG, eeg_chaninds(EEG, 'VEOG_lpf'), blink_fp_th, 0.75, 2, blink_sign);
+eye_blink_sig = eye_blink_sig | eogblink2events(EEG, eeg_chaninds(EEG, 'VEOG_lpf'), blink_vert_fp_th, 0.75, 3, blink_sign);
 
-eye_blink_sig = eye_blink_sig | eogblink2events(EEG, eeg_chaninds(EEG, 'VEOG_lpf'), blink_fp_th, 0.75, 1);
-eye_blink_sig = eye_blink_sig | eogblink2events(EEG, eeg_chaninds(EEG, 'VEOG_lpf'), blink_fp_th, 0.75, 2);
-eye_blink_sig = eye_blink_sig | eogblink2events(EEG, eeg_chaninds(EEG, 'VEOG_lpf'), blink_vert_fp_th, 0.75, 3);
-eye_blink_sig = eye_blink_sig | eogblink2events(EEG, eeg_chaninds(EEG, 'VEOG_lpf'), blink_tp_th, 0.025, 4);
 
 eye_lr_sig = false(2,EEG.pnts,EEG.trials);
 

@@ -17,18 +17,24 @@
 % You should have received a copy of the GNU Lesser General Public License
 % along with this program.  If not, see <https://www.gnu.org/licenses/>.
 %
-function [ blink_signal ] = eogblink2events( EEG, channel_idx, threshold, t_extend, label )
+function [ blink_signal, peak_sign ] = eogblink2events( EEG, channel_idx, threshold, t_extend, label, peak_sign )
 %eogblink2events Detects blinks in the EEG dataset using the channel 
 %   defined by channel_idx for trials with the label 'label' that are
 %   above the threshold
 
-% find if the blinks are along the positive or negative direction of the
-% EOG channel
-[~, idxs] = sort(abs(EEG.data(channel_idx,:)), 'descend');
-peak_idxs = idxs(1:floor(EEG.pnts*EEG.trials*0.01));
-peak_sign = median(sign(EEG.data(channel_idx, peak_idxs)));
+if nargin < 6 
+    % find if the blinks are along the positive or negative direction of the
+    % EOG channel during the trials with the correct label
+    label_mask = EEG.etc.trial_labels == label;
+    ref_sig = EEG.data(channel_idx,:, label_mask);
+    
+    % find the median sign of the 10% highest peaks
+    [~, idxs] = sort(abs(ref_sig(:)), 'descend');
+    peak_idxs = idxs(1:floor(EEG.pnts*sum(label_mask)*0.01));
+    peak_sign = median(sign(EEG.data(channel_idx, peak_idxs)));
+end
 
-blink_signal = squeeze((EEG.data(channel_idx,:,:) * peak_sign) > threshold);
+blink_signal = (EEG.data(channel_idx,:) * peak_sign) > threshold;
 
 blink_signal(:,EEG.etc.trial_labels ~= label) = 0;
 
